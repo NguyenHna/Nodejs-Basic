@@ -1,13 +1,20 @@
-const http = require("http");
-
-const server = http.createServer((req, res) => {
-  console.log("run request ...");
-  res.setHeader("Content-Type", "text/html");
-  res.write("<h3>Hello world! </h3>");
-  res.write("<h2>from ERIC & HOI DAN IT </h2>");
-  res.end();
-});
-
-server.listen(3000, "localhost", () => {
-  console.log("Node.JS server is running on port: 3000");
-});
+// câu lệnh import thư viện express
+// để sử dụng import trong ES6 thì ta cần phải cấu hình thêm.
+const express = require('express');  
+// khởi tạo một instane express
+const app = express();
+// init port
+// port phân chia ranh giới giữa các app .
+const port = 3000;
+// tạo một Router có path là '/'
+app.get('/',(req,res) => {
+  res.send('HelloWorld với hỏi dân IT & Eric');
+})
+// tạo một Router có path là '/about'
+app.get('/about',(req,res) => {
+  res.send(`I'm Eric`);
+})
+//câu lệnh để chỉ app sẽ chạy trên port nào.
+app.listen(port,()=>{
+console.log(`Example app listening on port: ${port}` )
+})
